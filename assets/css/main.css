@@ -1,0 +1,652 @@
+/*PORTFOLIO VICTORIA CHESA - CSS FINAL LIMPIO*/
+
+/*-----------------------------------------------------
+1. General styles
+-----------------------------------------------------*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 100%;
+  line-height: 1.6;
+  background: #fff;
+}
+
+/*-----------------------------------------------------
+2. Tipografía
+-----------------------------------------------------*/
+
+h1, h2 {
+  font-family: 'Satoshi', sans-serif;
+}
+
+h4, p {
+ font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #1b1b1b;
+}
+
+h4 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 400;
+  color: #1a1a1a;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+  color: #111;
+}
+
+/*-----------------------------------------------------
+3. Utilidades
+-----------------------------------------------------*/
+
+.container {
+  max-width: 1170px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.img-cover {
+  display: block;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 40px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+/*-----------------------------------------------------
+4. Scroll Anchors
+-----------------------------------------------------*/
+
+#works {
+  scroll-margin-top: 120px;
+}
+
+#contact {
+  scroll-margin-top: 100px;
+}
+
+/*-----------------------------------------------------
+5. Header
+-----------------------------------------------------*/
+
+.main-header {
+  padding: 24px 0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  border-bottom: 1px solid #eee;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 56px;
+  width: auto;
+}
+
+.open-nav {
+  display: none;
+  cursor: pointer;
+}
+
+/*-----------------------------------------------------
+6. Hero Section
+-----------------------------------------------------*/
+
+.hero {
+  padding: 100px 0 80px;
+  position: relative;
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.intro__title {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1.08;
+  color: #1a1a1a;
+  margin: 0 0 32px 0;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-highlight {
+  font-weight: 800; /* ← IGUAL que el título */
+  display: inline;
+}
+
+.hero-description {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #1a1a1a;
+  text-align: left;
+  margin: 0;
+  max-width: 700px;
+}
+
+/* Menú vertical DERECHA */
+.hero .social-links {
+  list-style: none; /* ← QUITA las bolitas */
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+}
+
+.hero .social-links li {
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+  writing-mode: vertical-rl;
+  text-transform: lowercase;
+}
+
+.hero .social-links a {
+  color: #111;
+  transition: color 0.2s ease;
+}
+
+.hero .social-links a:hover {
+  color: #FB36A0;
+}
+
+/*-----------------------------------------------------
+7. Portfolio Filters
+-----------------------------------------------------*/
+
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0 40px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/*-----------------------------------------------------
+8. Portfolio Grid
+-----------------------------------------------------*/
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 580px);
+  gap: 32px;
+  row-gap: 40px;
+  padding: 80px 0 120px;
+  max-width: 1192px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.portfolio-grid a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-grid a:hover {
+  transform: translateY(-4px);
+}
+
+.item {
+  background: #fafcfd;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  width: 580px;
+  height: 620px;
+  border-radius: 16px;
+}
+
+.item-img {
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.item:hover .item-img img {
+  transform: scale(1.05);
+}
+
+.item-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+  color: #1b1b1b;
+}
+
+.item h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin: 0;
+}
+
+/*-----------------------------------------------------
+9. Footer CTA
+-----------------------------------------------------*/
+
+.cta {
+  text-align: center;
+  padding: 120px 0 80px 0;
+  width: 100%;
+}
+
+.cta h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #1a1a1a;
+}
+
+/*-----------------------------------------------------
+10. Footer Simple
+-----------------------------------------------------*/
+
+.footer-default {
+  height: 100px;
+  line-height: 100px;
+  border-top: 1px solid #eee;
+}
+
+.footer-default .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-default .copyright {
+  float: left;
+  font-weight: 500; /* ← Negrita sutil */
+  letter-spacing: 0.4px;
+}
+
+.footer-default .follow-us-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+.footer-default .follow-us-links li {
+  margin: 0;
+}
+
+.footer-default .follow-us-links a {
+  color: #111;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.footer-default .follow-us-links a:hover {
+  color: #FB36A0;
+}
+
+/*-----------------------------------------------------
+11. Single Project Page
+-----------------------------------------------------*/
+.single-project .intro {
+	margin: 95px 0 110px 0;
+}
+
+.single-project .intro h1 {
+	font-size: 3.75rem;
+	font-weight: 400;
+	margin: 0 0 25px -3px;
+	text-transform: capitalize;
+}
+
+.single-project .intro ul {
+	float: left;
+	list-style: none;
+	margin-top: 7px;
+	width: 50%;
+}
+
+.single-project .intro ul li {
+	font-size: 1rem;
+	font-weight: 300;
+	letter-spacing: .1px;
+	margin-bottom: 8px;
+	text-transform: capitalize;
+}
+
+.single-project .intro p {
+	float: right;
+	font-size: 1.125rem;
+	font-weight: 300;
+	line-height: 1.9;
+	width: 50%;
+}
+
+.single-project .info {
+	font-size: 1.125rem;
+	font-weight: 300;
+	line-height: 1.9;
+	margin: 110px 0;
+	width: 60%;
+}
+
+.img-full {
+	height: 600px;
+	width: 100%;
+}
+
+.img-halved .item {
+	float: left;
+	height: 670px;
+	width: 48.75%;
+}
+
+.img-halved .item:nth-of-type(1) {
+	margin-right: 2.5%;
+}
+
+/*-----------------------------------------------------
+14. Project Navigation
+-----------------------------------------------------*/
+
+.project-navigation-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 120px;
+  padding: 60px 0;
+  border-top: 1px solid #eee;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav-btn {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: #FB36A0;
+}
+
+/*-----------------------------------------------------
+15. Ocultar menú móvil en desktop
+-----------------------------------------------------*/
+
+.aside-navigation-overlay {
+  display: none;
+}
+
+/*-----------------------------------------------------
+16. Responsive
+-----------------------------------------------------*/
+
+@media (max-width: 1240px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    padding: 80px 20px 120px;
+  }
+  
+  .item {
+    width: 100%;
+    height: auto;
+    min-height: 620px;
+    padding: 40px;
+  }
+  
+  .item-img {
+    height: 350px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gallery-item {
+    width: 500px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .open-nav {
+    display: block;
+  }
+
+  .hero {
+    padding: 100px 0 60px;
+  }
+  
+  .intro__title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .hero .social-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .hero .social-links li {
+    writing-mode: horizontal-tb;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-filters {
+    gap: 8px;
+    margin: 2rem 0 3rem;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 20px 80px;
+  }
+  
+  .item {
+    width: 100%;
+    min-height: auto;
+    padding: 32px;
+  }
+  
+  .item-img {
+    height: 280px;
+  }
+
+  .cta {
+    padding: 80px 20px 60px;
+  }
+
+  .cta h1 {
+    font-size: 2rem;
+  }
+
+  .footer-default .container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .single-project .intro h1 {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+  
+  .gallery-scroll {
+    padding: 20px;
+  }
+  
+  .gallery-item {
+    width: 85vw;
+    height: 300px;
+  }
+  
+  .single-project .info {
+    margin: 60px 0;
+  }
+  
+  .img-halved {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-navigation-simple {
+    margin-top: 80px;
+    padding: 40px 20px;
+  }
+  
+  .nav-btn {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .open-nav {
+    display: none;
+  }
+}
