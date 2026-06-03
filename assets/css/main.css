@@ -36,7 +36,7 @@ h4, p {
 }
 
 h1 {
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(2.8rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -46,8 +46,9 @@ h1 {
 }
 
 h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
+  /* ANTES: 1.25rem — sin peso visual suficiente en cards */
+  font-size: 1.4rem;
+  font-weight: 600;
   line-height: 1.3;
   color: #1b1b1b;
 }
@@ -80,9 +81,10 @@ a {
 -----------------------------------------------------*/
 
 .container {
-  max-width: 1170px;
+  /* ANTES: max-width 1170px con padding 20px — demasiado estrecho */
+  max-width: 1280px;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 48px;
 }
 
 .clearfix {
@@ -128,11 +130,11 @@ a {
 -----------------------------------------------------*/
 
 #works {
-  scroll-margin-top: 120px;
+  scroll-margin-top: 100px;
 }
 
 #contact {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 /*-----------------------------------------------------
@@ -140,7 +142,8 @@ a {
 -----------------------------------------------------*/
 
 .main-header {
-  padding: 24px 0;
+  /* ANTES: padding 24px — un poco alto, se compacta */
+  padding: 16px 0;
   position: sticky;
   top: 0;
   background: #fff;
@@ -155,7 +158,7 @@ a {
 }
 
 .logo {
-  height: 64px;
+  height: 56px;
   width: auto;
 }
 
@@ -169,45 +172,47 @@ a {
 -----------------------------------------------------*/
 
 .hero {
-  padding: 100px 0 80px;
+  padding: 64px 0 48px;
   position: relative;
   width: 100%;
-  max-width: 1170px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 .intro__title {
   font-family: 'Satoshi', sans-serif;
   font-weight: 800;
-  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-size: clamp(2.8rem, 5vw, 4rem);
   line-height: 1.08;
   color: #1a1a1a;
-  margin: 0 0 32px 0;
+  margin: 0 0 28px 0;
   text-align: left;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-highlight {
-  font-weight: 800; /* ← IGUAL que el título */
+  font-weight: 800;
   display: inline;
 }
 
 .hero-description {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: #1a1a1a;
+  /* ANTES: 1.25rem — parecía grande pero en ese mar de espacio se perdía */
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: #444;
   text-align: left;
   margin: 0;
-  max-width: 700px;
+  /* ANTES: max-width 700px — demasiado ancho, difícil de leer y sin tensión */
+  max-width: 540px;
 }
 
 /* Menú vertical DERECHA */
 .hero .social-links {
-  list-style: none; /* ← QUITA las bolitas */
+  list-style: none;
   position: absolute;
-  right: -6px;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
   margin: 0;
@@ -215,10 +220,11 @@ a {
 }
 
 .hero .social-links li {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  margin-bottom: 32px;
+  /* ANTES: margin-bottom 32px — mucho espacio entre items del menú */
+  margin-bottom: 20px;
   writing-mode: vertical-rl;
   text-transform: lowercase;
 }
@@ -239,12 +245,13 @@ a {
 .portfolio-filters {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin: 24px 0 40px;
+  gap: 10px;
+  margin: 40px 0 32px;
+  padding: 0 48px;
 }
 
 .filter-btn {
-  padding: 10px 24px;
+  padding: 9px 22px;
   border-radius: 999px;
   border: 1px solid #ddd;
   background: transparent;
@@ -266,73 +273,126 @@ a {
 /*-----------------------------------------------------
 8. Portfolio Grid
 -----------------------------------------------------*/
- 
+
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(2, 580px);
-  gap: 32px;
-  row-gap: 40px;
-  padding: 80px 0 120px;
-  max-width: 1192px;
+  /* ANTES: repeat(2, 580px) fijas — las columnas flotaban centradas */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  row-gap: 56px;
+  /* ANTES: padding 80px 0 120px — enorme, creaba mucho vacío arriba y abajo */
+  padding: 0 48px 80px;
+  max-width: 1280px;
   margin: 0 auto;
-  justify-content: center;
 }
- 
+
 .portfolio-grid a {
   text-decoration: none;
   color: inherit;
   display: block;
 }
- 
+
 .item {
-  background: #fafcfd;
-  padding: 48px;
+  background: transparent;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  width: 580px;
-  height: 620px;
-  border-radius: 16px;
-  transition: none; /* ← SIN transición en la card */
-}
- 
-.item-img {
   width: 100%;
-  height: 380px;
-  overflow: hidden;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  border: 1px solid #eee;
-  background: #fff;
+  height: auto;
+  border-radius: 0;
+  transition: none;
 }
- 
+
+/* Wrapper relativo para el overlay de hover */
+.item-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: #f0f0f0;
+}
+
 .item-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
- 
-.item:hover .item-img img {
-  transform: scale(1.05);
+
+/* Overlay oscuro en hover */
+.item-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: 12px;
 }
- 
+
+/* Badge "Ver proyecto" en hover */
+.item-img::before {
+  content: 'Ver proyecto →';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  z-index: 2;
+  background: #fff;
+  color: #111;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  white-space: nowrap;
+}
+
+.portfolio-grid a:hover .item-img img {
+  transform: scale(1.04);
+}
+
+.portfolio-grid a:hover .item-img::after {
+  opacity: 1;
+}
+
+.portfolio-grid a:hover .item-img::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Texto debajo: título izquierda, categoría derecha */
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
 .item-title {
   font-family: 'Satoshi', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 400;
   line-height: 1.3;
-  margin: 0 0 8px 0;
+  margin: 0;
   color: #1b1b1b;
 }
- 
+
 .item h4 {
   font-family: 'Satoshi', sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.72rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #666;
+  letter-spacing: 0.08em;
+  color: #999;
   margin: 0;
+  white-space: nowrap;
 }
 
 /*-----------------------------------------------------
@@ -341,7 +401,8 @@ a {
 
 .cta {
   text-align: center;
-  padding: 120px 0 80px 0;
+  /* ANTES: padding 120px 0 80px — demasiado espacio encima */
+  padding: 72px 0 64px;
   width: 100%;
 }
 
@@ -358,8 +419,8 @@ a {
 -----------------------------------------------------*/
 
 .footer-default {
-  height: 100px;
-  line-height: 100px;
+  height: 80px;
+  line-height: 80px;
   border-top: 1px solid #eee;
 }
 
@@ -371,7 +432,7 @@ a {
 
 .footer-default .copyright {
   float: left;
-  font-weight: 500; /* ← Negrita sutil */
+  font-weight: 500;
   letter-spacing: 0.4px;
 }
 
@@ -403,56 +464,56 @@ a {
 11. Single Project Page
 -----------------------------------------------------*/
 .single-project .intro {
-	margin: 95px 0 110px 0;
+  margin: 72px 0 88px 0;
 }
 
 .single-project .intro h1 {
-	font-size: 3.75rem;
-	font-weight: 400;
-	margin: 0 0 25px -3px;
-	text-transform: capitalize;
+  font-size: 3.75rem;
+  font-weight: 400;
+  margin: 0 0 25px -3px;
+  text-transform: capitalize;
 }
 
 .single-project .intro ul {
-	float: left;
-	list-style: none;
-	margin-top: 7px;
-	width: 50%;
+  float: left;
+  list-style: none;
+  margin-top: 7px;
+  width: 50%;
 }
 
 .single-project .intro ul li {
-	font-size: 1rem;
-	font-weight: 300;
-	letter-spacing: .1px;
-	margin-bottom: 8px;
-	text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: .1px;
+  margin-bottom: 8px;
+  text-transform: capitalize;
 }
 
 .single-project .intro p {
-	float: right;
-	font-size: 1.125rem;
-	font-weight: 300;
-	line-height: 1.9;
-	width: 50%;
+  float: right;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.9;
+  width: 50%;
 }
 
 .single-project .info {
-	font-size: 1.125rem;
-	font-weight: 300;
-	line-height: 1.9;
-	margin: 110px 0;
-	width: 60%;
+  font-size: 1.125rem;
+  font-weight: 300;
+  line-height: 1.9;
+  margin: 110px 0;
+  width: 60%;
 }
 
 .img-full {
-	height: 600px;
-	width: 100%;
+  height: 600px;
+  width: 100%;
 }
 
 .img-halved .item {
-	float: left;
-	height: 670px;
-	width: 48.75%;
+  float: left;
+  height: 670px;
+  width: 48.75%;
 }
 
 .single-project img {
@@ -470,14 +531,14 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 120px;
-  padding: 60px 0;
+  margin-top: 100px;
+  padding: 48px 0;
   border-top: 1px solid #eee;
-  max-width: 1170px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 48px;
+  padding-right: 48px;
 }
 
 .nav-btn {
@@ -505,26 +566,30 @@ a {
 16. Responsive
 -----------------------------------------------------*/
 
-@media (max-width: 1240px) {
+@media (max-width: 1280px) {
+  .container {
+    padding: 0 32px;
+  }
+
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 100%;
-    padding: 80px 20px 120px;
+    padding: 0 0 80px;
   }
-  
-  .item {
-    width: 100%;
-    height: auto;
-    min-height: 620px;
-    padding: 40px;
-  }
-  
+
   .item-img {
-    height: 350px;
+    height: 360px;
   }
 }
 
 @media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .item-img {
+    height: 320px;
+  }
+
   .gallery-item {
     width: 500px;
     height: 350px;
@@ -536,16 +601,20 @@ a {
     display: block;
   }
 
-  .hero {
-    padding: 100px 0 60px;
+  .container {
+    padding: 0 20px;
   }
-  
+
+  .hero {
+    padding: 48px 0 40px;
+  }
+
   .intro__title {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
-  
+
   .hero-description {
     font-size: 1rem;
     text-align: center;
@@ -557,7 +626,7 @@ a {
     flex-direction: row;
     justify-content: center;
     gap: 16px;
-    margin-top: 40px;
+    margin-top: 32px;
   }
 
   .hero .social-links li {
@@ -568,7 +637,7 @@ a {
 
   .portfolio-filters {
     gap: 8px;
-    margin: 2rem 0 3rem;
+    margin: 20px 0 20px;
   }
 
   .filter-btn {
@@ -578,22 +647,21 @@ a {
 
   .portfolio-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 60px 20px 80px;
+    gap: 24px;
+    padding: 0 0 60px;
   }
-  
+
   .item {
     width: 100%;
-    min-height: auto;
-    padding: 32px;
+    padding: 16px 16px 20px;
   }
-  
+
   .item-img {
-    height: 280px;
+    height: 260px;
   }
 
   .cta {
-    padding: 80px 20px 60px;
+    padding: 60px 20px 48px;
   }
 
   .cta h1 {
@@ -610,35 +678,35 @@ a {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .single-project .intro h1 {
     font-size: 2rem;
     margin-bottom: 24px;
   }
-  
+
   .gallery-scroll {
     padding: 20px;
   }
-  
+
   .gallery-item {
     width: 85vw;
     height: 300px;
   }
-  
+
   .single-project .info {
     margin: 60px 0;
   }
-  
+
   .img-halved {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .project-navigation-simple {
-    margin-top: 80px;
-    padding: 40px 20px;
+    margin-top: 60px;
+    padding: 32px 20px;
   }
-  
+
   .nav-btn {
     font-size: 1.2rem;
   }
@@ -654,4 +722,27 @@ a {
 .single-project .item {
   background: none;
   border-radius: 0;
+}
+
+* { cursor: none; }
+
+.cursor {
+  width: 12px;
+  height: 12px;
+  background: #FB36A0;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.cursor.hover {
+  width: 28px;
+  height: 28px;
+  background: #FB36A0;
+  opacity: 0.5;
 }
