@@ -1,243 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<!-- Metas -->
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<title>Kano - Creative Minimal Portfolio HTML Template</title>
-	<meta name="description" content="Kano - Creative Minimal Portfolio HTML Template">
-
-	<!-- External CSS -->
-	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-	<link rel="stylesheet" href="assets/css/themify-icons.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Victoria Chesa - About Me</title>
+	<meta name="description" content="Victoria Chesa - Sobre mí">
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/colors.css">
-	<link rel="stylesheet" href="assets/css/responsive.css">
 
-	<!-- Google Fonts -->
-	<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500&f[]=general-sans@300,400,600&display=swap" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&f[]=poppins@1&display=swap" rel="stylesheet">
 
 	<!-- Favicon -->
 	<link rel="icon" href="assets/img/favicon.png">
+
+	<style>
+		/* ===== ABOUT ME — desktop interactivo ===== */
+
+		.about-desktop {
+			position: relative;
+			width: 100%;
+			height: calc(100vh - 185px); /* resta header + footer para que el footer se vea */
+			min-height: 540px;
+			overflow: hidden;
+		}
+
+		/* ── Título central ── */
+		.center-title {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			pointer-events: none;
+			z-index: 1;
+			white-space: nowrap;
+		}
+
+		.center-title h1 {
+			font-family: 'Satoshi', sans-serif;
+			font-size: clamp(2.2rem, 4vw, 3.4rem);
+			font-weight: 800;
+			color: #1a1a1a;
+			line-height: 1.08;
+			letter-spacing: -0.02em;
+		}
+
+		.center-title h1 strong {
+			font-weight: 800;
+			color: #1a1a1a;
+		}
+
+		/* ── Items (carpetas y fotos) ── */
+		.item {
+			position: absolute;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 6px;
+			cursor: pointer;
+			z-index: 2;
+			user-select: none;
+			transition: transform 0.15s ease;
+			-webkit-tap-highlight-color: transparent;
+		}
+
+		.item:hover { transform: scale(1.08); }
+		.item:active { transform: scale(0.95); }
+		.item.selected { transform: scale(1.05); }
+
+		.item-label {
+			font-family: 'Satoshi', sans-serif;
+			font-size: 13px;
+			font-weight: 600;
+			color: #2a2a2a;
+			text-align: center;
+			max-width: 110px;
+			line-height: 1.35;
+			letter-spacing: 0.01em;
+		}
+
+		.folder-svg { width: 72px; height: auto; display: block; }
+
+		/* ── Foto miniatura estilo finder ── */
+		.photo-thumb {
+			width: 96px;
+			height: 108px;
+			border-radius: 5px;
+			overflow: hidden;
+			background: #f3eef1;
+			border: 1px solid #eee;
+			transform: rotate(-4deg);
+			box-shadow: 2px 3px 10px rgba(0,0,0,0.10);
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.photo-item:hover .photo-thumb {
+			transform: rotate(-2deg) scale(1.05);
+			box-shadow: 4px 6px 18px rgba(0,0,0,0.14);
+		}
+
+		.photo-thumb img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		.photo-thumb-placeholder {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #f4f4f4;
+			color: #999;
+			font-size: 28px;
+		}
+
+		/* ── Imagen flotante centrada ── */
+		.img-popup {
+			position: fixed;
+			z-index: 200;
+			display: none;
+			pointer-events: none;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.img-popup img {
+			width: min(380px, 60vmin);
+			height: min(480px, 75vmin);
+			object-fit: cover;
+			border-radius: 8px;
+			display: block;
+			box-shadow: 0 24px 80px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.10);
+			opacity: 0;
+			transform: scale(0.88);
+			transition: opacity 0.24s ease, transform 0.3s cubic-bezier(0.34,1.3,0.64,1);
+		}
+
+		.img-popup.visible img {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		/* overlay para cerrar al clicar fuera */
+		.about-overlay {
+			display: none;
+			position: fixed;
+			inset: 0;
+			z-index: 100;
+		}
+
+		.about-overlay.active { display: block; }
+
+		/* ── Responsive ── */
+		@media (max-width: 768px) {
+			.about-desktop {
+				height: auto;
+				min-height: auto;
+				padding: 40px 24px 60px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 32px;
+				overflow: visible;
+			}
+
+			.center-title {
+				position: static;
+				transform: none;
+				white-space: normal;
+				margin-bottom: 8px;
+			}
+
+			.item {
+				position: static !important;
+				transform: none !important;
+			}
+
+			.item:hover { transform: none !important; }
+
+			.img-popup img {
+				width: min(320px, 80vw);
+				height: min(400px, 60vh);
+			}
+		}
+	</style>
 </head>
 <body>
 
-	<!-- ========== Header ========== -->
-
+	<!-- Header -->
 	<header class="main-header">
-
 		<div class="container">
-
 			<a href="index.html">
-				<img src="assets/img/logo.svg" class="logo" alt="">
+				<img src="assets/img/pixel rosa.png" class="logo" alt="Victoria Chesa">
 			</a>
-
-			<a href="#" class="open-nav">
-				<i></i>
-			</a>
-
 			<div class="clearfix"></div>
+		</div>
+	</header>
 
-		</div> <!-- /.container -->
+	<!-- Main -->
+	<main>
 
-	</header> <!-- /.main-header -->
-	
+		<div class="about-desktop">
 
-	<!-- ========== Main ========== -->
-
-	<main class="about">
-
-		<div class="container">
-
-			<h1 class="intro">An award winning digital agency<br> based in London. We design and build<br> beautiful digital products that<br> make a difference.</h1>
-
-			<div class="services">
-				
-				<h2 class="about-heading">our services</h2>
-
-				<div class="services-item">
-
-					<div class="content">
-
-						<span class="service-icon"><i class="ti ti-paint-bucket "></i></span>
-
-						<h3>design</h3>
-						<ul>
-							<li>brand identity</li>
-							<li>creative direction</li>
-							<li>user interface design</li>
-							<li>visual design</li>
-							<li>web design</li>
-						</ul>
-
-					</div> <!-- /.content -->
-
-				</div> <!-- /.services-item -->
-
-				<div class="services-item">
-
-					<div class="content">
-
-						<span class="service-icon"><i class="ti ti-pencil-alt "></i></span>
-
-						<h3>strategy</h3>
-						<ul>
-							<li>analitics</li>
-							<li>audience research</li>
-							<li>digital strategy</li>
-							<li>creative research</li>
-							<li>social media strategy</li>
-						</ul>
-
-					</div> <!-- /.content -->
-
-				</div> <!-- /.services-item -->
-
-				<div class="services-item">
-
-					<div class="content">
-
-						<span class="service-icon"><i class="ti ti-settings"></i></span>
-
-						<h3>development</h3>
-						<ul>
-							<li>WordPress</li>
-							<li>web development</li>
-							<li>reponsive design</li>
-							<li>shopify development</li>
-							<li>CMS implementation</li>
-						</ul>
-
-					</div> <!-- /.content -->
-
-				</div> <!-- /.services-item -->
-
-				<div class="clearfix"></div>
-
-			</div> <!-- /.services -->
-
-			<div class="team">
-
-				<h2 class="about-heading">our team</h2>
-				
-				<div class="team-member">
-					<img src="assets/img/image-placeholder.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>helen brown</h2>
-							<h3>founder, CEO</h3>
-						</div>
-					</div>
-				</div> <!-- /.team-member -->
-
-				<div class="team-member">
-					<img src="assets/img/image-placeholder-2.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>amelia evans</h2>
-							<h3>art director</h3>
-						</div>
-					</div>
-				</div>
-				<div class="team-member">
-					<img src="assets/img/image-placeholder.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>george wood</h2>
-							<h3>lead developer</h3>
-						</div>
-					</div>
-				</div>
-				<div class="team-member">
-					<img src="assets/img/image-placeholder-2.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>anna smith</h2>
-							<h3>UI Designer</h3>
-						</div>
-					</div>
-				</div>
-				<div class="team-member">
-					<img src="assets/img/image-placeholder.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>olivia jones</h2>
-							<h3>brand strategist</h3>
-						</div>
-					</div>
-				</div>
-				<div class="team-member">
-					<img src="assets/img/image-placeholder-2.jpg" alt="" class="img-cover">
-					<div class="overlay">
-						<div class="info">
-							<h2>pluto</h2>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix"></div>
-
-			</div> <!-- /.team -->
-
-			<div class="cta">
-				<h1>Ready to start a project?</h1>
-				<a href="contact.html" class="btn">contact us</a>
+			<!-- Título central -->
+			<div class="center-title">
+				<h1>Who's the<br><strong>designer?</strong></h1>
 			</div>
 
-		</div> <!-- /.container -->
+			<!-- SVG degradado compartido para las carpetas -->
+			<svg width="0" height="0" style="position:absolute;overflow:hidden">
+				<defs>
+					<linearGradient id="pg" x1="34" y1="8" x2="34" y2="54" gradientUnits="userSpaceOnUse">
+						<stop stop-color="#fff" stop-opacity="0.12"/>
+						<stop offset="1" stop-color="#000" stop-opacity="0.18"/>
+					</linearGradient>
+				</defs>
+			</svg>
 
-	</main> <!-- /.about -->
+			<!-- FOTO MÍA — arriba izquierda -->
+			<div class="item photo-item" style="top:10%;left:10%"
+			     data-img="assets/img/about/Victoria Chesa_me.png"
+			     data-rot="-4"
+			     onclick="toggleImg(event, this)">
+				<div class="photo-thumb">
+					<img src="assets/img/about/Victoria Chesa_me.png" alt="Victoria Chesa"
+					     onerror="this.outerHTML='&lt;div class=&quot;photo-thumb-placeholder&quot;&gt;📷&lt;/div&gt;'">
+				</div>
+				<span class="item-label">me!</span>
+			</div>
 
-	<footer class="footer-default footer-default-border">
+			<!-- HABILIDADES — arriba derecha -->
+			<div class="item" style="top:10%;right:10%"
+			     data-img="assets/img/about/habilidades.jpg"
+			     data-rot="4"
+			     onclick="toggleImg(event, this)">
+				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
+					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
+				</svg>
+				<span class="item-label">skills</span>
+			</div>
 
+			<!-- ESTUDIOS Y EXPERIENCIA — izquierda, separada del título -->
+			<div class="item" style="top:72%;left:14%"
+			     data-img="assets/img/about/estudios-experiencia.jpg"
+			     data-rot="-3"
+			     onclick="toggleImg(event, this)">
+				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
+					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
+				</svg>
+				<span class="item-label">studies & experience</span>
+			</div>
+
+			<!-- FOTOGRAFÍA — derecha, separada del título -->
+			<div class="item" style="top:28%;right:22%"
+			     data-img="assets/img/about/foto.png"
+			     data-rot="6"
+			     onclick="toggleImg(event, this)">
+				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
+					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
+				</svg>
+				<span class="item-label">photography</span>
+			</div>
+
+			<!-- ARTE — abajo centro -->
+			<div class="item" style="bottom:10%;left:50%;transform:translateX(-50%)"
+			     data-img="assets/img/about/arte.jpg"
+			     data-rot="-4"
+			     onclick="toggleImg(event, this)">
+				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
+					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
+					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
+				</svg>
+				<span class="item-label">art</span>
+			</div>
+
+		</div> <!-- /.about-desktop -->
+
+	</main>
+
+	<!-- Overlay para cerrar la imagen flotante -->
+	<div class="about-overlay" id="aboutOverlay" onclick="closeImg()"></div>
+
+	<!-- Imagen flotante centrada -->
+	<div class="img-popup" id="imgPopup">
+		<img id="popupImg" src="" alt="">
+	</div>
+
+	<!-- Footer -->
+	<footer class="footer-default">
 		<div class="container">
-
-			<p class="copyright"><i class="far fa-copyright"></i> 2021 kano portfolio template. all rights reserved</p>
-
+			<p class="copyright">©2026 Made with love:)</p>
 			<ul class="follow-us-links">
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-				<li><a href="#"><i class="fab fa-dribbble"></i></a></li>
-				<li><a href="#"><i class="fab fa-behance"></i></a></li>
-			</ul> 
-
-			<div class="clearfix"></div>
-
-		</div> <!-- /.container -->
-
-	</footer> <!-- /.footer-default -->
-
-	<div class="aside-navigation-overlay">
-		
-		<div class="aside-navigation">
-			
-			<a href="#" class="close-nav"><i class="ti-close"></i></a>
-
-			<nav>
-				<ul>
-					<li><a href="index.html">home</a></li>
-					<li><a href="about.html">about</a></li>
-					<li><a href="portfolio.html">portfolio</a></li>
-					<li><a href="blog-list.html">blog</a></li>
-					<li><a href="contact.html">contact</a></li>
-				</ul>
-			</nav>
-
-			<ul class="social-icons">
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li><a href=""><i class="fab fa-instagram"></i></a></li>
-				<li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
-				<li><a href=""><i class="fab fa-dribbble"></i></a></li>
-				<li><a href=""><i class="fab fa-behance"></i></a></li>
+				<li><a href="#">LinkedIn</a></li>
+				<li><a href="#">Email</a></li>
+				<li><a href="#">Behance</a></li>
 			</ul>
-	
-		</div> <!-- /.aside-navigation -->
+		</div>
+	</footer>
 
-	</div> <!-- /.aside-navigation-overlay -->
-
+	<!-- JavaScript -->
 	<script src="assets/js/main.js"></script>
+
+	<script>
+		let activeItem = null;
+
+		function toggleImg(e, el) {
+			e.stopPropagation();
+
+			if (activeItem === el) {
+				closeImg();
+				return;
+			}
+
+			closeImg();
+			activeItem = el;
+			el.classList.add('selected');
+
+			const src = el.dataset.img;
+			const rot = parseFloat(el.dataset.rot) || 0;
+			const popup = document.getElementById('imgPopup');
+			const img   = document.getElementById('popupImg');
+
+			img.style.transition = 'none';
+			img.style.opacity = '0';
+			img.style.transform = `rotate(${rot}deg) scale(0.88)`;
+			img.src = src;
+			popup.style.display = 'block';
+
+			requestAnimationFrame(() => requestAnimationFrame(() => {
+				img.style.transition = 'opacity 0.24s ease, transform 0.3s cubic-bezier(0.34,1.3,0.64,1)';
+				img.style.opacity = '1';
+				img.style.transform = `rotate(${rot}deg) scale(1)`;
+				popup.classList.add('visible');
+			}));
+
+			document.getElementById('aboutOverlay').classList.add('active');
+		}
+
+		function closeImg() {
+			if (!activeItem) return;
+			activeItem.classList.remove('selected');
+			activeItem = null;
+
+			const popup = document.getElementById('imgPopup');
+			const img = document.getElementById('popupImg');
+
+			img.style.transition = 'opacity 0.18s ease, transform 0.2s ease';
+			img.style.opacity = '0';
+			img.style.transform = img.style.transform.replace('scale(1)', 'scale(0.9)');
+
+			setTimeout(() => {
+				popup.style.display = 'none';
+				popup.classList.remove('visible');
+			}, 200);
+
+			document.getElementById('aboutOverlay').classList.remove('active');
+		}
+	</script>
+
 </body>
 </html>

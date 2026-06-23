@@ -56,8 +56,10 @@ filterButtons.forEach(btn => {
 // Inicializar opacidad para transiciones suaves
 projects.forEach(project => {
   const parentLink = project.closest('a');
-  parentLink.style.transition = 'opacity 0.3s ease';
-  parentLink.style.opacity = '1';
+  if (parentLink) {
+    parentLink.style.transition = 'opacity 0.3s ease';
+    parentLink.style.opacity = '1';
+  }
 });
 
 // ========== Smooth Scroll - ARREGLADO ========== 
