@@ -82,7 +82,7 @@ a {
 
 .container {
   /* ANTES: max-width 1170px con padding 20px — demasiado estrecho */
-  max-width: 1280px;
+  max-width: 1500px;
   margin: auto;
   padding: 0 48px;
 }
