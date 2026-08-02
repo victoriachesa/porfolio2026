@@ -82,7 +82,7 @@ a {
 
 .container {
   /* ANTES: max-width 1170px con padding 20px — demasiado estrecho */
-  max-width: 1500px;
+  max-width: 1280px;
   margin: auto;
   padding: 0 48px;
 }
@@ -175,8 +175,6 @@ a {
   padding: 64px 0 48px;
   position: relative;
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
 }
 
 .intro__title {
@@ -273,17 +271,12 @@ a {
 /*-----------------------------------------------------
 8. Portfolio Grid
 -----------------------------------------------------*/
-
 .portfolio-grid {
   display: grid;
-  /* ANTES: repeat(2, 580px) fijas — las columnas flotaban centradas */
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   row-gap: 56px;
-  /* ANTES: padding 80px 0 120px — enorme, creaba mucho vacío arriba y abajo */
-  padding: 0 48px 80px;
-  max-width: 1280px;
-  margin: 0 auto;
+  padding: 0 0 80px;
 }
 
 .portfolio-grid a {
@@ -746,4 +739,200 @@ a {
   height: 28px;
   background: #FB36A0;
   opacity: 0.5;
+}
+
+/*-----------------------------------------------------
+About Me
+-----------------------------------------------------*/
+
+.about-wrapper {
+  padding: 64px 0 100px;
+}
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 56px;
+  align-items: end;
+}
+
+.about-intro h1 {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.about-bio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #555;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+.cell--photo {
+  grid-column: span 4;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 500px;
+  background: #f0f0f0;
+}
+
+.cell--photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+
+.cell--photo-placeholder {
+  width: 100%; height: 100%; min-height: 500px;
+  display: flex; align-items: center;
+  justify-content: center; flex-direction: column;
+  gap: 8px; color: #ccc;
+  font-family: 'Satoshi', sans-serif; font-size: 0.8rem;
+}
+
+.cell--exp {
+  grid-column: span 4;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.exp-block-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #bbb;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.exp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 12px;
+}
+
+.exp-row:last-child { border-bottom: none; }
+
+.exp-name {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.exp-role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72rem;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.cell--skills {
+  grid-column: span 4;
+  padding: 32px 28px;
+}
+
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.skills-pills span {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #555;
+  border: 1px solid #e8e8e8;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.cell--img {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f0f0f0;
+}
+
+.cell--img img {
+  width: 100%; height: 100%;
+  min-height: 220px;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+
+.cell--img:hover img { transform: scale(1.04); }
+
+.cell--img-placeholder {
+  width: 100%; min-height: 220px;
+  display: flex; align-items: center;
+  justify-content: center; color: #ccc; font-size: 1.8rem;
+}
+
+.cell--photography { grid-column: span 6; }
+.cell--art         { grid-column: span 6; }
+
+.cell--social {
+  grid-column: span 12;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 8px;
+}
+
+.cell--social span {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ccc;
+}
+
+.cell--social .social-item {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cell--social .social-item:hover { color: #FB36A0; }
+
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: repeat(6, 1fr); }
+  .cell--photo { grid-column: span 3; }
+  .cell--exp   { grid-column: span 3; }
+  .cell--skills { grid-column: span 6; }
+  .cell--photography { grid-column: span 3; }
+  .cell--art { grid-column: span 3; }
+}
+
+@media (max-width: 768px) {
+  .about-wrapper { padding: 40px 0 80px; }
+  .about-intro { grid-template-columns: 1fr; gap: 20px; }
+  .about-grid  { grid-template-columns: 1fr; }
+  .cell--photo, .cell--exp, .cell--skills,
+  .cell--photography, .cell--art { grid-column: span 1; }
 }

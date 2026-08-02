@@ -4,196 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Victoria Chesa - About Me</title>
-	<meta name="description" content="Victoria Chesa - Sobre mí">
-
-	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-
-	<!-- Fonts -->
 	<link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&f[]=poppins@1&display=swap" rel="stylesheet">
-
-	<!-- Favicon -->
 	<link rel="icon" href="assets/img/favicon.png">
-
-	<style>
-		/* ===== ABOUT ME — desktop interactivo ===== */
-
-		.about-desktop {
-			position: relative;
-			width: 100%;
-			height: calc(100vh - 185px); /* resta header + footer para que el footer se vea */
-			min-height: 540px;
-			overflow: hidden;
-		}
-
-		/* ── Título central ── */
-		.center-title {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
-			pointer-events: none;
-			z-index: 1;
-			white-space: nowrap;
-		}
-
-		.center-title h1 {
-			font-family: 'Satoshi', sans-serif;
-			font-size: clamp(2.2rem, 4vw, 3.4rem);
-			font-weight: 800;
-			color: #1a1a1a;
-			line-height: 1.08;
-			letter-spacing: -0.02em;
-		}
-
-		.center-title h1 strong {
-			font-weight: 800;
-			color: #1a1a1a;
-		}
-
-		/* ── Items (carpetas y fotos) ── */
-		.item {
-			position: absolute;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			gap: 6px;
-			cursor: pointer;
-			z-index: 2;
-			user-select: none;
-			transition: transform 0.15s ease;
-			-webkit-tap-highlight-color: transparent;
-		}
-
-		.item:hover { transform: scale(1.08); }
-		.item:active { transform: scale(0.95); }
-		.item.selected { transform: scale(1.05); }
-
-		.item-label {
-			font-family: 'Satoshi', sans-serif;
-			font-size: 13px;
-			font-weight: 600;
-			color: #2a2a2a;
-			text-align: center;
-			max-width: 110px;
-			line-height: 1.35;
-			letter-spacing: 0.01em;
-		}
-
-		.folder-svg { width: 72px; height: auto; display: block; }
-
-		/* ── Foto miniatura estilo finder ── */
-		.photo-thumb {
-			width: 96px;
-			height: 108px;
-			border-radius: 5px;
-			overflow: hidden;
-			background: #f3eef1;
-			border: 1px solid #eee;
-			transform: rotate(-4deg);
-			box-shadow: 2px 3px 10px rgba(0,0,0,0.10);
-			transition: transform 0.2s ease, box-shadow 0.2s ease;
-		}
-
-		.photo-item:hover .photo-thumb {
-			transform: rotate(-2deg) scale(1.05);
-			box-shadow: 4px 6px 18px rgba(0,0,0,0.14);
-		}
-
-		.photo-thumb img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			display: block;
-		}
-
-		.photo-thumb-placeholder {
-			width: 100%;
-			height: 100%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: #f4f4f4;
-			color: #999;
-			font-size: 28px;
-		}
-
-		/* ── Imagen flotante centrada ── */
-		.img-popup {
-			position: fixed;
-			z-index: 200;
-			display: none;
-			pointer-events: none;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
-		.img-popup img {
-			width: min(380px, 60vmin);
-			height: min(480px, 75vmin);
-			object-fit: cover;
-			border-radius: 8px;
-			display: block;
-			box-shadow: 0 24px 80px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.10);
-			opacity: 0;
-			transform: scale(0.88);
-			transition: opacity 0.24s ease, transform 0.3s cubic-bezier(0.34,1.3,0.64,1);
-		}
-
-		.img-popup.visible img {
-			opacity: 1;
-			transform: scale(1);
-		}
-
-		/* overlay para cerrar al clicar fuera */
-		.about-overlay {
-			display: none;
-			position: fixed;
-			inset: 0;
-			z-index: 100;
-		}
-
-		.about-overlay.active { display: block; }
-
-		/* ── Responsive ── */
-		@media (max-width: 768px) {
-			.about-desktop {
-				height: auto;
-				min-height: auto;
-				padding: 40px 24px 60px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 32px;
-				overflow: visible;
-			}
-
-			.center-title {
-				position: static;
-				transform: none;
-				white-space: normal;
-				margin-bottom: 8px;
-			}
-
-			.item {
-				position: static !important;
-				transform: none !important;
-			}
-
-			.item:hover { transform: none !important; }
-
-			.img-popup img {
-				width: min(320px, 80vw);
-				height: min(400px, 60vh);
-			}
-		}
-	</style>
 </head>
 <body>
 
-	<!-- Header -->
 	<header class="main-header">
 		<div class="container">
 			<a href="index.html">
@@ -203,103 +19,97 @@
 		</div>
 	</header>
 
-	<!-- Main -->
 	<main>
+		<div class="container">
+			<div class="about-wrapper">
 
-		<div class="about-desktop">
-
-			<!-- Título central -->
-			<div class="center-title">
-				<h1>Who's the<br><strong>designer?</strong></h1>
-			</div>
-
-			<!-- SVG degradado compartido para las carpetas -->
-			<svg width="0" height="0" style="position:absolute;overflow:hidden">
-				<defs>
-					<linearGradient id="pg" x1="34" y1="8" x2="34" y2="54" gradientUnits="userSpaceOnUse">
-						<stop stop-color="#fff" stop-opacity="0.12"/>
-						<stop offset="1" stop-color="#000" stop-opacity="0.18"/>
-					</linearGradient>
-				</defs>
-			</svg>
-
-			<!-- FOTO MÍA — arriba izquierda -->
-			<div class="item photo-item" style="top:10%;left:10%"
-			     data-img="assets/img/about/Victoria Chesa_me.png"
-			     data-rot="-4"
-			     onclick="toggleImg(event, this)">
-				<div class="photo-thumb">
-					<img src="assets/img/about/Victoria Chesa_me.png" alt="Victoria Chesa"
-					     onerror="this.outerHTML='&lt;div class=&quot;photo-thumb-placeholder&quot;&gt;📷&lt;/div&gt;'">
+				<div class="about-intro">
+					<div>
+						<h1>Hi, I'm Victoria.</h1>
+						<div class="about-bio">
+							<p>I'm a product designer with a background in graphic design, who believes good design should feel effortless. For me, user experience is about making things feel simple, natural, and human.</p>
+						</div>
+					</div>
+					<div class="about-bio">
+						<p>Based in Spain, currently working on Sistema RED — the digital ecosystem for Spain's Social Security system. Outside of work, I shoot photography and paint.</p>
+					</div>
 				</div>
-				<span class="item-label">me!</span>
+
+				<div class="about-grid">
+
+					<div class="cell--photo">
+						<div class="cell--photo-placeholder">
+							<span style="font-size:1.8rem">📷</span>
+							<span>Your photo</span>
+						</div>
+						<!-- cuando tengas foto: <img src="assets/img/about/foto-mia.jpg" alt="Victoria Chesa"> -->
+					</div>
+
+					<div class="cell--exp">
+						<div>
+							<span class="exp-block-label">Experience</span>
+							<div class="exp-row">
+								<span class="exp-name">Sistema RED · Seguridad Social</span>
+								<span class="exp-role">2023–now</span>
+							</div>
+							<div class="exp-row">
+								<span class="exp-name">Sede Electrónica SS</span>
+								<span class="exp-role">2022–2023</span>
+							</div>
+							<div class="exp-row">
+								<span class="exp-name">Kutxabank</span>
+								<span class="exp-role">2021–2022</span>
+							</div>
+						</div>
+						<div>
+							<span class="exp-block-label">Education</span>
+							<div class="exp-row">
+								<span class="exp-name">Tu título / Universidad</span>
+								<span class="exp-role">Año</span>
+							</div>
+							<div class="exp-row">
+								<span class="exp-name">Otra formación</span>
+								<span class="exp-role">Año</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="cell--skills">
+						<span class="exp-block-label">Skills</span>
+						<div class="skills-pills">
+							<span>UI Design</span>
+							<span>Design Systems</span>
+							<span>Figma</span>
+							<span>Prototyping</span>
+							<span>Accessibility</span>
+							<span>User Research</span>
+							<span>HTML / CSS</span>
+							<span>Public Sector</span>
+						</div>
+					</div>
+
+					<div class="cell--img cell--photography">
+						<div class="cell--img-placeholder">📸</div>
+						<!-- <img src="assets/img/about/fotografia.jpg" alt="Photography"> -->
+					</div>
+
+					<div class="cell--img cell--art">
+						<div class="cell--img-placeholder">🎨</div>
+						<!-- <img src="assets/img/about/arte.jpg" alt="Art"> -->
+					</div>
+
+					<div class="cell--social">
+						<span>Find me</span>
+						<a href="#" class="social-item">LinkedIn</a>
+						<a href="#" class="social-item">Email</a>
+						<a href="#" class="social-item">Behance</a>
+					</div>
+
+				</div>
 			</div>
-
-			<!-- HABILIDADES — arriba derecha -->
-			<div class="item" style="top:10%;right:10%"
-			     data-img="assets/img/about/habilidades.jpg"
-			     data-rot="4"
-			     onclick="toggleImg(event, this)">
-				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
-					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
-				</svg>
-				<span class="item-label">skills</span>
-			</div>
-
-			<!-- ESTUDIOS Y EXPERIENCIA — izquierda, separada del título -->
-			<div class="item" style="top:72%;left:14%"
-			     data-img="assets/img/about/estudios-experiencia.jpg"
-			     data-rot="-3"
-			     onclick="toggleImg(event, this)">
-				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
-					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
-				</svg>
-				<span class="item-label">studies & experience</span>
-			</div>
-
-			<!-- FOTOGRAFÍA — derecha, separada del título -->
-			<div class="item" style="top:28%;right:22%"
-			     data-img="assets/img/about/foto.png"
-			     data-rot="6"
-			     onclick="toggleImg(event, this)">
-				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
-					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
-				</svg>
-				<span class="item-label">photography</span>
-			</div>
-
-			<!-- ARTE — abajo centro -->
-			<div class="item" style="bottom:10%;left:50%;transform:translateX(-50%)"
-			     data-img="assets/img/about/arte.jpg"
-			     data-rot="-4"
-			     onclick="toggleImg(event, this)">
-				<svg class="folder-svg" viewBox="0 0 68 56" fill="none">
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="#3a3a3a"/>
-					<path d="M2 22H66V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V22Z" fill="#1a1a1a"/>
-					<path d="M2 14C2 10.686 4.686 8 8 8H26.5L31.5 14H60C63.314 14 66 16.686 66 20V48C66 51.314 63.314 54 60 54H8C4.686 54 2 51.314 2 48V14Z" fill="url(#pg)"/>
-				</svg>
-				<span class="item-label">art</span>
-			</div>
-
-		</div> <!-- /.about-desktop -->
-
+		</div>
 	</main>
 
-	<!-- Overlay para cerrar la imagen flotante -->
-	<div class="about-overlay" id="aboutOverlay" onclick="closeImg()"></div>
-
-	<!-- Imagen flotante centrada -->
-	<div class="img-popup" id="imgPopup">
-		<img id="popupImg" src="" alt="">
-	</div>
-
-	<!-- Footer -->
 	<footer class="footer-default">
 		<div class="container">
 			<p class="copyright">©2026 Made with love:)</p>
@@ -311,65 +121,6 @@
 		</div>
 	</footer>
 
-	<!-- JavaScript -->
 	<script src="assets/js/main.js"></script>
-
-	<script>
-		let activeItem = null;
-
-		function toggleImg(e, el) {
-			e.stopPropagation();
-
-			if (activeItem === el) {
-				closeImg();
-				return;
-			}
-
-			closeImg();
-			activeItem = el;
-			el.classList.add('selected');
-
-			const src = el.dataset.img;
-			const rot = parseFloat(el.dataset.rot) || 0;
-			const popup = document.getElementById('imgPopup');
-			const img   = document.getElementById('popupImg');
-
-			img.style.transition = 'none';
-			img.style.opacity = '0';
-			img.style.transform = `rotate(${rot}deg) scale(0.88)`;
-			img.src = src;
-			popup.style.display = 'block';
-
-			requestAnimationFrame(() => requestAnimationFrame(() => {
-				img.style.transition = 'opacity 0.24s ease, transform 0.3s cubic-bezier(0.34,1.3,0.64,1)';
-				img.style.opacity = '1';
-				img.style.transform = `rotate(${rot}deg) scale(1)`;
-				popup.classList.add('visible');
-			}));
-
-			document.getElementById('aboutOverlay').classList.add('active');
-		}
-
-		function closeImg() {
-			if (!activeItem) return;
-			activeItem.classList.remove('selected');
-			activeItem = null;
-
-			const popup = document.getElementById('imgPopup');
-			const img = document.getElementById('popupImg');
-
-			img.style.transition = 'opacity 0.18s ease, transform 0.2s ease';
-			img.style.opacity = '0';
-			img.style.transform = img.style.transform.replace('scale(1)', 'scale(0.9)');
-
-			setTimeout(() => {
-				popup.style.display = 'none';
-				popup.classList.remove('visible');
-			}, 200);
-
-			document.getElementById('aboutOverlay').classList.remove('active');
-		}
-	</script>
-
 </body>
 </html>
