@@ -1,7 +1,7 @@
-/*PORTFOLIO VICTORIA CHESA - CSS FINAL LIMPIO*/
+/*PORTFOLIO VICTORIA CHESA*/
 
 /*-----------------------------------------------------
-1. General styles
+1. Reset y base
 -----------------------------------------------------*/
 
 * {
@@ -12,67 +12,86 @@
 
 html {
   overflow-x: hidden;
-  overflow-y: scroll;
   scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Satoshi', sans-serif;
-  font-size: 100%;
-  line-height: 1.6;
   background: #fff;
-}
-
-/*-----------------------------------------------------
-2. Tipografía
------------------------------------------------------*/
-
-h1, h2 {
-  font-family: 'Satoshi', sans-serif;
-}
-
-h4, p {
- font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: #1a1a1a;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h2 {
-  /* ANTES: 1.25rem — sin peso visual suficiente en cards */
-  font-size: 1.4rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #1b1b1b;
-}
-
-h4 {
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #666;
-}
-
-p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  font-weight: 400;
-  color: #1a1a1a;
 }
 
 a {
   text-decoration: none;
-  transition: all 0.2s ease;
+  color: #111;
+  transition: color 0.2s ease;
+}
+
+/*-----------------------------------------------------
+2. Tipografía — 6 estilos, ni uno más
+-----------------------------------------------------*/
+
+/* 1. Título hero — home únicamente */
+.type-hero {
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+/* 2. Título página — about, proyectos */
+.type-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+}
+
+/* 3. Párrafo intro — home + about */
+.type-intro {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* 4. Párrafo proyecto — bloques de texto en single project */
+.type-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #333;
+}
+
+/* 5. Textos imagen home — NO tocar, te gustan como están */
+.item-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #1b1b1b;
+}
+
+.item h4 {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #999;
+}
+
+/* 6. Listados — exp-row, cap-list */
+.type-list {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.55;
   color: #111;
 }
 
@@ -81,7 +100,6 @@ a {
 -----------------------------------------------------*/
 
 .container {
-  /* ANTES: max-width 1170px con padding 20px — demasiado estrecho */
   max-width: 1280px;
   margin: auto;
   padding: 0 48px;
@@ -98,51 +116,38 @@ a {
   width: 100%;
 }
 
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
   padding: 20px 40px;
-  background-color: #1a1a1a;
+  background: #1a1a1a;
   color: #fff;
   font-family: 'Satoshi', sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
   border-radius: 50px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #333;
+  background: #333;
   transform: translateY(-2px);
 }
 
 /*-----------------------------------------------------
-4. Scroll Anchors
+4. Scroll anchors
 -----------------------------------------------------*/
 
-#works {
-  scroll-margin-top: 100px;
-}
-
-#contact {
-  scroll-margin-top: 80px;
-}
+#works  { scroll-margin-top: 100px; }
+#contact { scroll-margin-top: 80px; }
 
 /*-----------------------------------------------------
 5. Header
 -----------------------------------------------------*/
 
 .main-header {
-  /* ANTES: padding 24px — un poco alto, se compacta */
   padding: 16px 0;
   position: sticky;
   top: 0;
@@ -162,82 +167,41 @@ a {
   width: auto;
 }
 
-.open-nav {
-  display: none;
-  cursor: pointer;
-}
-
 /*-----------------------------------------------------
-6. Hero Section
+6. Hero
 -----------------------------------------------------*/
 
 .hero {
   padding: 64px 0 48px;
   position: relative;
-  width: 100%;
-}
-
-.intro__title {
-  font-family: 'Satoshi', sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  line-height: 1.08;
-  color: #1a1a1a;
-  margin: 0 0 28px 0;
-  text-align: left;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.hero-highlight {
-  font-weight: 800;
-  display: inline;
 }
 
 .hero-description {
-  font-family: 'Poppins', sans-serif;
-  /* ANTES: 1.25rem — parecía grande pero en ese mar de espacio se perdía */
-  font-size: 1.1rem;
-  line-height: 1.75;
-  color: #444;
-  text-align: left;
-  margin: 0;
-  /* ANTES: max-width 700px — demasiado ancho, difícil de leer y sin tensión */
   max-width: 540px;
+  margin-top: 24px;
 }
 
-/* Menú vertical DERECHA */
 .hero .social-links {
   list-style: none;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  margin: 0;
-  padding: 0;
 }
 
 .hero .social-links li {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  /* ANTES: margin-bottom 32px — mucho espacio entre items del menú */
   margin-bottom: 20px;
   writing-mode: vertical-rl;
   text-transform: lowercase;
 }
 
-.hero .social-links a {
-  color: #111;
-  transition: color 0.2s ease;
-}
-
-.hero .social-links a:hover {
-  color: #FB36A0;
-}
+.hero .social-links a:hover { color: #FB36A0; }
 
 /*-----------------------------------------------------
-7. Portfolio Filters
+7. Filtros portfolio
 -----------------------------------------------------*/
 
 .portfolio-filters {
@@ -245,7 +209,6 @@ a {
   justify-content: center;
   gap: 10px;
   margin: 40px 0 32px;
-  padding: 0 48px;
 }
 
 .filter-btn {
@@ -269,8 +232,9 @@ a {
 }
 
 /*-----------------------------------------------------
-8. Portfolio Grid
+8. Portfolio grid
 -----------------------------------------------------*/
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -280,23 +244,15 @@ a {
 }
 
 .portfolio-grid a {
-  text-decoration: none;
-  color: inherit;
   display: block;
+  color: inherit;
 }
 
 .item {
-  background: transparent;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  transition: none;
 }
 
-/* Wrapper relativo para el overlay de hover */
 .item-img {
   position: relative;
   width: 100%;
@@ -314,18 +270,16 @@ a {
   transition: transform 0.5s ease;
 }
 
-/* Overlay oscuro en hover */
 .item-img::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0,0,0,0.28);
   opacity: 0;
   transition: opacity 0.35s ease;
   border-radius: 12px;
 }
 
-/* Badge "Ver proyecto" en hover */
 .item-img::before {
   content: 'Ver proyecto →';
   position: absolute;
@@ -347,20 +301,13 @@ a {
   white-space: nowrap;
 }
 
-.portfolio-grid a:hover .item-img img {
-  transform: scale(1.04);
-}
-
-.portfolio-grid a:hover .item-img::after {
-  opacity: 1;
-}
-
+.portfolio-grid a:hover .item-img img    { transform: scale(1.04); }
+.portfolio-grid a:hover .item-img::after { opacity: 1; }
 .portfolio-grid a:hover .item-img::before {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Texto debajo: título izquierda, categoría derecha */
 .item-meta {
   display: flex;
   justify-content: space-between;
@@ -368,38 +315,17 @@ a {
   gap: 16px;
 }
 
-.item-title {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 400;
-  line-height: 1.3;
-  margin: 0;
-  color: #1b1b1b;
-}
-
-.item h4 {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #999;
-  margin: 0;
-  white-space: nowrap;
-}
-
 /*-----------------------------------------------------
-9. Footer CTA
+9. CTA
 -----------------------------------------------------*/
 
 .cta {
   text-align: center;
-  /* ANTES: padding 120px 0 80px — demasiado espacio encima */
   padding: 72px 0 64px;
-  width: 100%;
 }
 
 .cta h1 {
+  font-family: 'Satoshi', sans-serif;
   font-size: 3.5rem;
   font-weight: 900;
   line-height: 1.2;
@@ -408,7 +334,7 @@ a {
 }
 
 /*-----------------------------------------------------
-10. Footer Simple
+10. Footer
 -----------------------------------------------------*/
 
 .footer-default {
@@ -423,48 +349,20 @@ a {
   align-items: center;
 }
 
-.footer-default .copyright {
-  float: left;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-}
-
 .footer-default .follow-us-links {
   list-style: none;
   display: flex;
   gap: 24px;
-  margin: 0;
-  padding: 0;
-  float: right;
 }
 
-.footer-default .follow-us-links li {
-  margin: 0;
-}
-
-.footer-default .follow-us-links a {
-  color: #111;
-  font-size: 1rem;
-  transition: color 0.2s ease;
-  line-height: 1;
-}
-
-.footer-default .follow-us-links a:hover {
-  color: #FB36A0;
-}
+.footer-default .follow-us-links a:hover { color: #FB36A0; }
 
 /*-----------------------------------------------------
-11. Single Project Page
+11. Single project
 -----------------------------------------------------*/
-.single-project .intro {
-  margin: 72px 0 88px 0;
-}
 
-.single-project .intro h1 {
-  font-size: 3.75rem;
-  font-weight: 600;
-  margin: 0 0 25px -3px;
-  text-transform: none;
+.single-project .intro {
+  margin: 72px 0 88px;
 }
 
 .single-project .intro ul {
@@ -475,39 +373,18 @@ a {
 }
 
 .single-project .intro ul li {
-  font-size: 1rem;
-  font-weight: 300;
-  letter-spacing: .1px;
   margin-bottom: 8px;
-  text-transform: capitalize;
 }
 
 .single-project .intro p {
   float: right;
-  font-size: 1.125rem;
-  font-weight: 300;
-  line-height: 1.9;
   margin-top: 48px;
   width: 50%;
 }
 
 .single-project .info {
-  font-size: 1.125rem;
-  font-weight: 300;
-  line-height: 1.9;
   margin: 110px 0;
   width: 60%;
-}
-
-.img-full {
-  height: 100%;
-  width: 100%;
-}
-
-.img-halved .item {
-  float: left;
-  height: 670px;
-  width: 48.75%;
 }
 
 .single-project img {
@@ -518,21 +395,17 @@ a {
 }
 
 /*-----------------------------------------------------
-14. Project Navigation
+12. Navegación entre proyectos
 -----------------------------------------------------*/
 
 .project-navigation-simple {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 100px;
-  padding: 48px 0;
+  margin: 100px auto 0;
+  padding: 48px;
   border-top: 1px solid #eee;
   max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 48px;
-  padding-right: 48px;
 }
 
 .nav-btn {
@@ -540,183 +413,171 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   color: #111;
-  text-decoration: none;
-  transition: color 0.2s ease;
 }
 
-.nav-btn:hover {
-  color: #FB36A0;
-}
+.nav-btn:hover { color: #FB36A0; }
 
 /*-----------------------------------------------------
-15. Ocultar menú móvil en desktop
+13. About
 -----------------------------------------------------*/
 
-.aside-navigation-overlay {
-  display: none;
+.about-wrapper {
+  padding: 64px 0 120px;
 }
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+
+.about-bio {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.about-intro > p.about-bio {
+  padding-top: 6rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.cell--photo { grid-column: 1; }
+
+.cell--photo img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+.cell--exp {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.cell--skills { grid-column: 3; }
+
+.exp-block-label {
+  display: inline-block;
+  padding: 9px 22px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-row {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #111;
+}
+
+.exp-role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  color: #999;
+  margin-left: 8px;
+}
+
+.cap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cap-list span {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #111;
+}
+
+.about-gallery {
+  display: grid;
+  grid-template-columns: 5fr 4fr 3fr;
+  grid-template-rows: 220px 220px;
+  gap: 6px;
+  margin-top: 64px;
+}
+
+.cell--photography { grid-column: 1; grid-row: 1 / span 2; overflow: hidden; }
+.cell--art         { grid-column: 2; grid-row: 1; overflow: hidden; }
+.cell--art2        { grid-column: 2; grid-row: 2; overflow: hidden; }
+.cell--extra       { grid-column: 3; grid-row: 1 / span 2; overflow: hidden; }
+
+.cell--photography img,
+.cell--art img,
+.cell--art2 img,
+.cell--extra img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cell--photography:hover img,
+.cell--art:hover img,
+.cell--art2:hover img,
+.cell--extra:hover img {
+  transform: scale(1.03);
+}
+
+.cell--social {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid #efefef;
+}
+
+.cell--social > span {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.social-item {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111;
+  transition: color 0.2s;
+}
+
+.social-item:hover { color: #FB36A0; }
 
 /*-----------------------------------------------------
-16. Responsive
+14. Cursor personalizado
 -----------------------------------------------------*/
-
-@media (max-width: 1280px) {
-  .container {
-    padding: 0 32px;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 0 80px;
-  }
-
-  .item-img {
-    height: 360px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 24px;
-  }
-
-  .item-img {
-    height: 320px;
-  }
-
-  .gallery-item {
-    width: 500px;
-    height: 350px;
-  }
-}
-
-@media (max-width: 768px) {
-  .open-nav {
-    display: block;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  .hero {
-    padding: 48px 0 40px;
-  }
-
-  .intro__title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .hero .social-links {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .hero .social-links li {
-    writing-mode: horizontal-tb;
-    margin-bottom: 0;
-    font-size: 0.9rem;
-  }
-
-  .portfolio-filters {
-    gap: 8px;
-    margin: 20px 0 20px;
-  }
-
-  .filter-btn {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 0 0 60px;
-  }
-
-  .item {
-    width: 100%;
-    padding: 16px 16px 20px;
-  }
-
-  .item-img {
-    height: 260px;
-  }
-
-  .cta {
-    padding: 60px 20px 48px;
-  }
-
-  .cta h1 {
-    font-size: 2rem;
-  }
-
-  .footer-default .container {
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-  }
-
-  .intro-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .single-project .intro h1 {
-    font-size: 2rem;
-    margin-bottom: 24px;
-  }
-
-  .gallery-scroll {
-    padding: 20px;
-  }
-
-  .gallery-item {
-    width: 85vw;
-    height: 300px;
-  }
-
-  .single-project .info {
-    margin: 60px 0;
-  }
-
-  .img-halved {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-navigation-simple {
-    margin-top: 60px;
-    padding: 32px 20px;
-  }
-
-  .nav-btn {
-    font-size: 1.2rem;
-  }
-}
-
-@media (min-width: 769px) {
-  .open-nav {
-    display: none;
-  }
-}
-
-/* Fix imágenes en páginas de proyecto */
-.single-project .item {
-  background: none;
-  border-radius: 0;
-}
 
 * { cursor: none; }
 
@@ -737,258 +598,83 @@ a {
 .cursor.hover {
   width: 28px;
   height: 28px;
-  background: #FB36A0;
   opacity: 0.5;
 }
+
 /*-----------------------------------------------------
-About
+15. Responsive
 -----------------------------------------------------*/
 
-.about-wrapper {
-  padding: 64px 0 120px;
-}
-
-
-/* ── INTRO ── */
-
-.about-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  margin-bottom: 80px;
-  align-items: end;
-}
-
-/* Columna izquierda: h1 + bio pegados */
-.about-intro > div h1 {
-  font-family: 'Satoshi', sans-serif;
-  font-size: clamp(2.6rem, 4vw, 3.6rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-  color: #1a1a1a;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.about-bio {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.85;
-  color: #555;
-}
-
-.about-intro > p.about-bio {
-  padding-top: 6rem;
-}
-
-/* ── GRID: foto | exp+edu | capabilities ── */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
-  align-items: start;
- margin-bottom: 80px;
-}
-
-/* FOTO */
-.cell--photo {
-  grid-column: 1;
-}
-
-.cell--photo img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  aspect-ratio: 3 / 4;
-  /* sin border-radius, igual que la referencia */
-}
-
-/* EXPERIENCIA + EDUCACIÓN */
-.cell--exp {
-  grid-column: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 36px;
-}
-
-/* CAPABILITIES */
-.cell--skills {
-  grid-column: 3;
-}
-
-
-/* ── CHIP — solo títulos de sección ──
-   Mismo tamaño y forma que .filter-btn de la home
-   pero sin cursor pointer ni estado activo        */
-
-.exp-block-label {
-  display: inline-block;
-  padding: 9px 22px;
-  border-radius: 999px;
-  border: 1px solid #ddd;
-  background: transparent;
-  font-family: 'Satoshi', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #666;
-  line-height: 1;
-  margin-bottom: 16px;
-}
-
-
-/* ── LISTAS de experiencia / educación ── */
-
-.exp-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.exp-row {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: #111;
-}
-
-/* año en gris después del nombre */
-.exp-role {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.78rem;
-  color: #999;
-  margin-left: 8px;
-}
-
-
-/* ── CAPABILITIES — texto plano, sin pills ── */
-
-.cap-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.cap-list span {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 0.875rem;
-  line-height: 1.55;
-  color: #111;
-}
-
-
-/* ── GALERÍA — sin border-radius, gap 6px ── */
-
-.about-gallery {
-  display: grid;
-  grid-template-columns: 5fr 4fr 3fr;
-  grid-template-rows: 220px 220px;
-  gap: 6px;
-  margin-top: 64px;
-}
-
-/* imagen grande izquierda — ocupa las 2 filas */
-.cell--photography {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  overflow: hidden;
-}
-
-/* imagen top centro */
-.cell--art {
-  grid-column: 2;
-  grid-row: 1;
-  overflow: hidden;
-}
-
-/* imagen bottom centro */
-.cell--art2 {
-  grid-column: 2;
-  grid-row: 2;
-  overflow: hidden;
-}
-
-/* celda gris derecha — placeholder o imagen extra */
-.cell--extra {
-  grid-column: 3;
-  grid-row: 1 / span 2;
-  background: #ebebeb;
-}
-
-.cell--photography img,
-.cell--art img,
-.cell--art2 img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.cell--photography:hover img,
-.cell--art:hover img,
-.cell--art2:hover img {
-  transform: scale(1.03);
-}
-
-
-/* ── RESPONSIVE ── */
-
-@media (max-width: 1100px) {
-
-  .about-intro {
-    gap: 48px;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .cell--photo  { grid-column: 1; }
-  .cell--exp    { grid-column: 2; }
-  .cell--skills { grid-column: 1 / span 2; }
-
-  .about-gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px;
-  }
-
-  .cell--photography { grid-column: 1; grid-row: 1 / span 2; }
-  .cell--art         { grid-column: 2; grid-row: 1; }
-  .cell--art2        { grid-column: 2; grid-row: 2; }
-  .cell--extra       { display: none; }
+@media (max-width: 1024px) {
+  .container { padding: 0 24px; }
 }
 
 @media (max-width: 768px) {
+  .container { padding: 0 20px; }
 
-  .about-wrapper { padding: 40px 0 80px; }
+  .hero { padding: 48px 0 40px; }
+  .hero .social-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .hero .social-links li {
+    writing-mode: horizontal-tb;
+    margin-bottom: 0;
+  }
 
-  .about-intro {
+  .portfolio-filters { margin: 20px 0; }
+  .filter-btn { padding: 8px 16px; font-size: 0.8rem; }
+
+  .portfolio-grid {
     grid-template-columns: 1fr;
     gap: 24px;
-    margin-bottom: 48px;
+    padding: 0 0 60px;
   }
 
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .cta { padding: 60px 20px 48px; }
+  .cta h1 { font-size: 2rem; }
+
+  .footer-default .container {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+    line-height: 1.6;
+    height: auto;
+    padding: 24px 0;
   }
 
-  .cell--photo,
-  .cell--exp,
-  .cell--skills { grid-column: 1; }
+  .single-project .intro h1 { font-size: 2rem; }
+  .single-project .info { margin: 60px 0; }
+  .project-navigation-simple { padding: 32px 20px; }
+  .nav-btn { font-size: 1.2rem; }
 
+  .about-wrapper { padding: 40px 0 80px; }
+  .about-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cell--photo, .cell--exp, .cell--skills { grid-column: 1; }
   .about-gallery {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     margin-top: 40px;
   }
-
   .cell--photography { grid-column: 1; grid-row: auto; min-height: 260px; }
   .cell--art         { grid-column: 1; grid-row: auto; min-height: 200px; }
   .cell--art2        { grid-column: 1; grid-row: auto; min-height: 200px; }
   .cell--extra       { display: none; }
+}
+
+.img-halved {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin: 80px 0;
+}
+
+.img-halved .item {
+  aspect-ratio: 2/3;
+  overflow: hidden;
 }
