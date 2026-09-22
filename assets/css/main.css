@@ -89,9 +89,9 @@ a {
 /* 6. Listados — exp-row, cap-list */
 .type-list {
   font-family: 'Satoshi', sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.7;
   color: #111;
 }
 
