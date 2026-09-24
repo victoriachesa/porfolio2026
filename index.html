@@ -6,19 +6,11 @@
     <title>Victoria Chesa - Visual Designer</title>
     <meta name="description" content="Victoria Chesa - Diseñadora Visual Portfolio">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&f[]=poppins@1&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/img/favicon.png">
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="index.html">
-                <img src="assets/img/pixel rosa.png" class="logo" alt="Victoria Chesa">
-            </a>
-            <div class="clearfix"></div>
-        </div>
-    </header>
+    <script src="assets/js/layout.js" data-part="header"></script>
 
     <main>
         <div class="container">
@@ -27,25 +19,23 @@
             <div class="hero">
                 <h1 class="type-hero">
                     <span class="hero-highlight">Victoria Chesa.</span><br>
-                    <span data-es="Diseñadora de Producto" data-en="Product Designer">Product Designer</span>
+                    <span data-i18n="hero.role">Diseñadora de Producto</span>
                 </h1>
-                <p class="type-intro hero-description"
-                   data-es="Soy diseñadora de producto con formación en diseño gráfico, convencida de que el buen diseño debe sentirse natural. Para mí, la experiencia de usuario consiste en hacer que las cosas sean simples, intuitivas y humanas."
-                   data-en="I'm a product designer with a background in graphic design, convinced that good design should feel effortless. For me, user experience is about making things feel simple, natural, and human.">
-                    I'm a product designer with a background in graphic design, convinced that good design should feel effortless. For me, user experience is about making things feel simple, natural, and human.
+                <p class="type-intro hero-description" data-i18n="hero.intro">
+                    Soy diseñadora de producto con formación en diseño gráfico, convencida de que el buen diseño debe sentirse natural. Para mí, la experiencia de usuario consiste en hacer que las cosas sean simples, intuitivas y humanas.
                 </p>
                 <ul class="social-links">
-                    <li><a href="#works" data-es="trabajo" data-en="work">work</a></li>
-                    <li><a href="about.html" data-es="sobre mí" data-en="about me">about me</a></li>
-                    <li><a href="#contact" data-es="contacto" data-en="contact">contact</a></li>
+                    <li><a href="#works" data-i18n="nav.work">trabajo</a></li>
+                    <li><a href="about.html" data-i18n="nav.about">sobre mí</a></li>
+                    <li><a href="#contact" data-i18n="nav.contact">contacto</a></li>
                 </ul>
             </div>
 
             <!-- Filtros -->
             <div class="portfolio-filters" id="works">
-                <button class="filter-btn active" data-filter="all" data-es="Todo" data-en="All">All</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="filter.all">Todo</button>
                 <button class="filter-btn" data-filter="uxui">UX/UI</button>
-                <button class="filter-btn" data-filter="graphic" data-es="Diseño Gráfico" data-en="Graphic Design">Graphic Design</button>
+                <button class="filter-btn" data-filter="graphic" data-i18n="filter.graphic">Diseño Gráfico</button>
             </div>
 
             <!-- Grid -->
@@ -57,12 +47,8 @@
                             <img src="assets/img/sede_portada.png" alt="SEDE" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Diseño de la Sede Electrónica de la Seguridad Social Española"
-                                data-en="Design of the Spanish Social Security Electronic Headquarters">
-                                Diseño de la Sede Electrónica de la Seguridad Social Española
-                            </h2>
-                            <h4>UI y Sistema de diseño</h4>
+                            <h2 class="item-title" data-i18n="card.sede">Diseño de la Sede Electrónica de la Seguridad Social Española</h2>
+                            <h4 data-i18n="cat.ui">UI y Sistema de diseño</h4>
                         </div>
                     </div>
                 </a>
@@ -73,12 +59,8 @@
                             <img src="assets/img/KUTXA_1.png" alt="Kutxabank" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Rediseño de la app de Kutxabank"
-                                data-en="Kutxabank App Redesign">
-                                Rediseño de la app de Kutxabank
-                            </h2>
-                            <h4>UX/UI y Sistema de diseño</h4>
+                            <h2 class="item-title" data-i18n="card.kutxa">Rediseño de la app de Kutxabank</h2>
+                            <h4 data-i18n="cat.uxui">UX/UI y Sistema de diseño</h4>
                         </div>
                     </div>
                 </a>
@@ -89,12 +71,8 @@
                             <img src="assets/img/videomiscs_bajo.gif" alt="Health" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Diseño para la salud"
-                                data-en="Healthcare Design">
-                                Diseño para la salud
-                            </h2>
-                            <h4>UI y Sistema de diseño</h4>
+                            <h2 class="item-title" data-i18n="card.health">Diseño para la salud</h2>
+                            <h4 data-i18n="cat.ui">UI y Sistema de diseño</h4>
                         </div>
                     </div>
                 </a>
@@ -105,12 +83,8 @@
                             <img src="assets/img/samar_portada.png" alt="Mix" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Propuestas visuales"
-                                data-en="Visual Proposals">
-                                Propuestas visuales
-                            </h2>
-                            <h4>UI y Sistema de diseño</h4>
+                            <h2 class="item-title" data-i18n="card.mix">Propuestas visuales</h2>
+                            <h4 data-i18n="cat.ui">UI y Sistema de diseño</h4>
                         </div>
                     </div>
                 </a>
@@ -121,12 +95,8 @@
                             <img src="assets/img/dosta_portada.jpg" alt="Dosta" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Exposición &quot;Una mirada diferente&quot; con Dosta y cientochentagrados"
-                                data-en="Exhibition &quot;A Different Perspective&quot; with Dosta and cientochentagrados">
-                                Exposición "Una mirada diferente" con Dosta y cientochentagrados
-                            </h2>
-                            <h4>Diseño web y de cartelería</h4>
+                            <h2 class="item-title" data-i18n="card.dosta">Exposición "Una mirada diferente" con Dosta y cientochentagrados</h2>
+                            <h4 data-i18n="cat.web">Diseño web y de cartelería</h4>
                         </div>
                     </div>
                 </a>
@@ -137,12 +107,8 @@
                             <img src="assets/img/lhda-portada.png" alt="Las Hijas del Arte" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Identidad de marca &quot;Las hijas del Arte&quot;"
-                                data-en="Brand Identity &quot;Las hijas del Arte&quot;">
-                                Identidad de marca "Las hijas del Arte"
-                            </h2>
-                            <h4>Identidad de marca y RRSS</h4>
+                            <h2 class="item-title" data-i18n="card.lhda">Identidad de marca "Las hijas del Arte"</h2>
+                            <h4 data-i18n="cat.brand">Identidad de marca y RRSS</h4>
                         </div>
                     </div>
                 </a>
@@ -153,12 +119,8 @@
                             <img src="assets/img/CUIDADORA.png" alt="Cartelería" class="img-cover">
                         </div>
                         <div class="item-meta">
-                            <h2 class="item-title"
-                                data-es="Cartelería"
-                                data-en="Poster Design">
-                                Cartelería
-                            </h2>
-                            <h4>Diseño gráfico</h4>
+                            <h2 class="item-title" data-i18n="card.posters">Cartelería</h2>
+                            <h4 data-i18n="cat.graphic">Diseño gráfico</h4>
                         </div>
                     </div>
                 </a>
@@ -167,32 +129,16 @@
 
             <!-- CTA -->
             <div class="cta" id="contact">
-                <h1 class="type-hero"
-                    data-es="¿Te gusta lo que ves?"
-                    data-en="Like what you see?">
-                    Like what you see?
-                </h1>
-                <a href="contact.html" class="btn"
-                   data-es="Contáctame"
-                   data-en="Contact me">
-                    Contact me
-                </a>
+                <h1 class="type-hero" data-i18n="cta.title">¿Te gusta lo que ves?</h1>
+                <a href="assets/cv_VictoriaChesa.pdf" class="btn" data-i18n="cta.btn" target="_blank" rel="noopener noreferrer">CV</a>
             </div>
 
         </div>
     </main>
 
-    <footer class="footer-default">
-        <div class="container">
-            <p class="copyright">©2026 Made with love:)</p>
-            <ul class="follow-us-links">
-                <li><a href="https://www.linkedin.com/in/victoria-chesa/">LinkedIn</a></li>
-                <li><a href="mailto:victoriachesa@gmail.com">Email</a></li>
-                <li><a href="https://www.behance.net/victoriachesa">Behance</a></li>
-            </ul>
-        </div>
-    </footer>
+    <script src="assets/js/layout.js" data-part="footer"></script>
 
+    <script src="assets/js/i18n.js"></script>
     <script src="assets/js/main.js"></script>
 
 </body>

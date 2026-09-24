@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Victoria Chesa — About</title>
   <link rel="stylesheet" href="assets/css/main.css">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&f[]=poppins@1&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/img/favicon.png">
 </head>
 <body>
 
-  <header class="main-header">
-    <div class="container">
-      <a href="index.html">
-        <img src="assets/img/pixel rosa.png" class="logo" alt="Victoria Chesa">
-      </a>
-      <div class="clearfix"></div>
-    </div>
-  </header>
+  <script src="assets/js/layout.js" data-part="header"></script>
 
   <main>
     <div class="container">
@@ -25,22 +17,9 @@
 
         <!-- INTRO -->
         <div class="about-intro">
-          <div>
-            <h1 class="type-title"
-                data-es="Hola, soy Victoria."
-                data-en="Hi, I'm Victoria.">
-              Hi, I'm Victoria.
-            </h1>
-            <p class="about-bio"
-               data-es="Soy diseñadora de producto con formación en diseño visual, impulsada por la claridad, la curiosidad y el amor por el oficio visual. Disfruto transformando problemas complejos en experiencias simples e intuitivas que se sienten naturales, con propósito y humanas."
-               data-en="I'm a product designer with a background in visual design, driven by clarity, curiosity and a love for visual craft. I enjoy transforming complex problems into simple, intuitive experiences that feel natural, purposeful and human.">
-              I'm a product designer with a background in visual design, driven by clarity, curiosity and a love for visual craft. I enjoy transforming complex problems into simple, intuitive experiences that feel natural, purposeful and human.
-            </p>
-          </div>
-          <p class="about-bio"
-             data-es="Con base en Madrid, actualmente trabajo como Product Design Analyst en Accenture Song, diseñando servicios digitales para el sector público. Fuera del trabajo, disfruto de la fotografía y la pintura — dos prácticas creativas que inspiran continuamente la forma en que pienso sobre composición, narrativa y diseño visual."
-             data-en="Based in Madrid, I'm currently working as a Product Design Analyst at Accenture Song, designing digital services for the public sector. Outside work, I enjoy photography and painting—two creative practices that continuously inspire the way I think about composition, storytelling and visual design.">
-            Based in Madrid, I'm currently working as a Product Design Analyst at Accenture Song, designing digital services for the public sector. Outside work, I enjoy photography and painting—two creative practices that continuously inspire the way I think about composition, storytelling and visual design.
+          <h1 class="type-title" data-i18n="about.hello">Hola, soy Victoria.</h1>
+          <p class="type-intro" data-i18n="about.lead">
+            Soy diseñadora de producto con formación en diseño visual, impulsada por la claridad, la curiosidad y el amor por el oficio visual. Disfruto transformando problemas complejos en experiencias simples e intuitivas que se sienten naturales, con propósito y humanas.
           </p>
         </div>
 
@@ -51,40 +30,36 @@
             <img src="assets/img/about/Victoria Chesa_me.png" alt="Victoria Chesa">
           </div>
 
-          <div class="cell--exp">
-            <div>
-              <span class="exp-block-label"
-                    data-es="Experiencia"
-                    data-en="Experience">Experience</span>
-              <div class="exp-list">
-                <div class="exp-row">Product Design Senior Analyst · Accenture Song <span class="exp-role">2023 — Present</span></div>
-                <div class="exp-row">Graphic &amp; Web Designer · Renta 4 Banco <span class="exp-role">2022</span></div>
-                <div class="exp-row">Graphic Designer · cientochentagrados <span class="exp-role">2021</span></div>
+          <div class="about-lists">
+            <div class="cell--exp">
+              <div>
+                <span class="exp-block-label" data-i18n="about.experience">Experiencia</span>
+                <div class="exp-list">
+                  <div class="exp-row">Product Design Senior Analyst · Accenture Song <span class="exp-role">2023 — Present</span></div>
+                  <div class="exp-row">Graphic &amp; Web Designer · Renta 4 Banco <span class="exp-role">2022</span></div>
+                  <div class="exp-row">Graphic Designer · cientochentagrados <span class="exp-role">2021</span></div>
+                </div>
+              </div>
+              <div>
+                <span class="exp-block-label" data-i18n="about.education">Formación</span>
+                <div class="exp-list">
+                  <div class="exp-row">UX/UI Design · CICE Madrid</div>
+                  <div class="exp-row">Graphic Design · Escuela de Arte San Telmo</div>
+                </div>
               </div>
             </div>
-            <div>
-              <span class="exp-block-label"
-                    data-es="Formación"
-                    data-en="Education">Education</span>
-              <div class="exp-list">
-                <div class="exp-row">UX/UI Design · CICE Madrid</div>
-                <div class="exp-row">Graphic Design · Escuela de Arte San Telmo</div>
-              </div>
-            </div>
-          </div>
 
-          <div class="cell--skills">
-            <span class="exp-block-label"
-                  data-es="Capacidades"
-                  data-en="Capabilities">Capabilities</span>
-            <div class="cap-list">
-              <span>Product Design</span>
-              <span>Visual Design</span>
-              <span>Design Systems</span>
-              <span>User Research</span>
-              <span>Accessibility</span>
-              <span>Prototyping</span>
-              <span>HTML &amp; CSS</span>
+            <div class="cell--skills">
+              <span class="exp-block-label" data-i18n="about.skills">Capacidades</span>
+              <div class="cap-list">
+                <span>Product Design</span>
+                <span>Visual Design</span>
+                <span>Design Systems</span>
+                <span>User Research</span>
+                <span>Accessibility</span>
+                <span>Prototyping</span>
+                <span>HTML &amp; CSS</span>
+              </div>
             </div>
           </div>
 
@@ -95,12 +70,11 @@
           <div class="cell--photography"><img src="assets/img/about/ilus_conejo_2.jpg" alt=""></div>
           <div class="cell--art"><img src="assets/img/about/bebevacilon.jpg" alt=""></div>
           <div class="cell--art2"><img src="assets/img/about/P1140342.JPG" alt=""></div>
-          <div class="cell--extra"><img src="assets/img/about/Captura de pantalla 2026-05-24 122052.png" alt=""></div>
         </div>
 
         <!-- SOCIAL -->
         <div class="cell--social">
-          <span data-es="Conectemos" data-en="Let's connect">Let's connect</span>
+          <span data-i18n="about.connect">Conectemos</span>
           <a href="https://www.linkedin.com/in/victoria-chesa/" class="social-item">LinkedIn</a>
           <a href="mailto:victoriachesa@gmail.com" class="social-item">Email</a>
           <a href="https://www.behance.net/victoriachesa" class="social-item">Behance</a>
@@ -110,17 +84,9 @@
     </div>
   </main>
 
-  <footer class="footer-default">
-    <div class="container">
-      <p class="copyright">©2026 Made with love:)</p>
-      <ul class="follow-us-links">
-        <li><a href="https://www.linkedin.com/in/victoria-chesa/">LinkedIn</a></li>
-        <li><a href="mailto:victoriachesa@gmail.com">Email</a></li>
-        <li><a href="https://www.behance.net/victoriachesa">Behance</a></li>
-      </ul>
-    </div>
-  </footer>
+  <script src="assets/js/layout.js" data-part="footer"></script>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

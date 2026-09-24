@@ -1,5 +1,44 @@
 "use strict";
 
+// ========== Idioma ES / EN ==========
+const LANG_KEY = "lang";
+
+function readLang() {
+  try {
+    const stored = localStorage.getItem(LANG_KEY);
+    if (stored === "es" || stored === "en") return stored;
+  } catch (e) {}
+  return "es";
+}
+
+function applyLang(lang) {
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    if (!el._es) el._es = el.textContent.replace(/\s+/g, " ").trim();
+    var en = I18N[el.getAttribute("data-i18n")];
+    el.textContent = lang === "en" && en ? en : el._es;
+  });
+
+  document.querySelectorAll("[data-lang-toggle]").forEach(function (btn) {
+    const isEs = lang === "es";
+    btn.textContent = isEs ? "ES" : "EN";
+    btn.setAttribute("aria-label", isEs ? "Cambiar a inglés" : "Switch to Spanish");
+  });
+
+  try {
+    localStorage.setItem(LANG_KEY, lang);
+  } catch (e) {}
+}
+
+applyLang(readLang());
+
+document.querySelectorAll("[data-lang-toggle]").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    applyLang(document.documentElement.lang === "es" ? "en" : "es");
+  });
+});
+
 // ========== Open & Close Aside Navigation ==========
 const openNav = document.querySelector(".open-nav");
 const closeNav = document.querySelector(".close-nav");
@@ -37,8 +76,9 @@ filterButtons.forEach(btn => {
 
     // Filtrar proyectos - ARREGLADO: oculta el <a> padre
     projects.forEach(project => {
-      const parentLink = project.closest('a'); // ← Buscar el enlace padre
-      
+      const parentLink = project.closest('a');
+      if (!parentLink) return;
+
       if (filter === 'all' || project.dataset.category === filter) {
         parentLink.style.display = ''; // Mostrar
         // Opcional: añadir animación de entrada
