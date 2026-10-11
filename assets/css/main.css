@@ -434,15 +434,56 @@ a {
   color: #666;
 }
 
-.single-project .intro p {
+.single-project .intro-side {
   grid-column: 2;
   grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.single-project .intro p {
   margin: 0;
   width: auto;
 }
 
 .single-project .intro .clearfix {
   display: none;
+}
+
+.award {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #444;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+.single-project .award img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.award span {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #444;
+}
+
+.award span span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.award:hover span span {
+  color: var(--accent);
 }
 
 .single-project .info {
@@ -737,6 +778,7 @@ a {
   }
 
   .single-project .intro { grid-template-columns: 1fr; margin: 48px 0 64px; }
+  .single-project .intro-side { grid-column: 1; grid-row: auto; gap: 20px; }
   .single-project .intro h1 { font-size: 2rem; }
   .single-project .intro p { grid-column: 1; grid-row: auto; }
   .single-project .info { width: 100%; margin: 64px 0; }
