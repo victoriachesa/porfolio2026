@@ -30,6 +30,9 @@ var I18N = {
   "about.education": "Education",
   "about.skills": "Capabilities",
   "about.connect": "Let's connect",
+  "about.ch.me": "Me",
+  "about.ch.art": "Illustration",
+  "about.ch.photo": "Photography",
 
   "nav.prev": "← Previous",
   "nav.next": "Next →",
