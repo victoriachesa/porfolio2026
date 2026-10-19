@@ -123,9 +123,9 @@ a {
 -----------------------------------------------------*/
 
 .container {
-  max-width: 1680px;
+  max-width: 1720px;
   margin-inline: auto;
-  padding-inline: clamp(20px, 5vw, 96px);
+  padding-inline: clamp(24px, 8vw, 140px);
 }
 
 .clearfix {
@@ -523,9 +523,9 @@ a {
   justify-content: space-between;
   align-items: center;
   margin: 100px auto 0;
-  padding: 48px clamp(20px, 5vw, 96px);
+  padding: 48px clamp(24px, 8vw, 140px);
   border-top: 1px solid var(--line);
-  max-width: 1680px;
+  max-width: 1720px;
 }
 
 .project-navigation-simple .nav-btn[data-i18n="nav.next"] {
@@ -641,25 +641,30 @@ a {
 
 .about-chapters {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 2fr 1fr;
   gap: 16px;
   align-items: start;
 }
 
 .chapter-label {
-  margin-bottom: 12px;
+  min-height: 1.4em;
+  margin: 0 0 12px;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+  line-height: 1.4;
   color: #666;
+  white-space: nowrap;
 }
 
 .chapter-label > span:first-child {
   color: #999;
 }
 
-.chapter-label--empty {
-  visibility: hidden;
+.chapter-photos {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 16px;
 }
 
 .chapter img {
@@ -761,7 +766,7 @@ a {
     text-align: center;
     line-height: 1.6;
     height: auto;
-    padding: 24px 0;
+    padding-block: 24px;
   }
 
   .single-project .intro { grid-template-columns: 1fr; margin: 48px 0 64px; }
@@ -776,6 +781,6 @@ a {
   .about-wrapper { padding: 48px 0 80px; }
   .about-intro { margin-bottom: 64px; }
   .about-lists { margin-bottom: 64px; }
-  .about-chapters { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .about-chapters { grid-template-columns: 1fr; gap: 32px; }
   .exp-row { flex-direction: column; align-items: flex-start; gap: 0; }
 }
