@@ -37,6 +37,12 @@ var I18N = {
   "nav.prev": "← Previous",
   "nav.next": "Next →",
 
+  "pin.title": "This project is protected",
+  "pin.text": "Enter the PIN to view it",
+  "pin.error": "Incorrect PIN",
+  "pin.submit": "Enter",
+  "pin.back": "Back",
+
   "sede.title": "Spanish Social Security Electronic Headquarters",
   "sede.lead": "Redesign of one of Spain's most visited public portals. The challenge: bringing clarity and accessibility to a high-volume information environment used by millions of citizens every day.",
   "sede.p1": "As part of the design team for the 2025-26 redesign, I contributed to shaping the user experience of a platform that directly impacts millions of people. My work focused on screen composition and layout, establishing clear visual hierarchies in a content-heavy environment where structure and legibility are critical to citizens navigating complex administrative processes.",

@@ -31,6 +31,112 @@ function applyLang(lang) {
   } catch (e) {}
 }
 
+// Fichas cerradas: data-lock en el enlace de la home y en el body de la ficha.
+// Para dejar Sede abierta, quita data-lock de index.html y de single-project-SEDE.html.
+var PIN_KEY = "project-pin";
+var PIN_VALUE = "seeproject2026";
+
+function pinIsOpen() {
+  try {
+    return sessionStorage.getItem(PIN_KEY) === "ok";
+  } catch (e) {
+    return false;
+  }
+}
+
+function safeProjectFile(href) {
+  var file = String(href || "").split("/").pop().split("?")[0].split("#")[0];
+  return /^single-project-[A-Za-z0-9-]+\.html$/.test(file) ? file : "";
+}
+
+function closePinGate() {
+  var gate = document.querySelector(".pin-gate");
+  if (gate) gate.remove();
+  document.body.classList.remove("pin-open");
+  if (location.search.indexOf("pin=") !== -1) {
+    history.replaceState(null, "", location.pathname);
+  }
+}
+
+function openPinGate(href) {
+  var file = safeProjectFile(href);
+  if (!file) return;
+  if (pinIsOpen()) {
+    location.href = file;
+    return;
+  }
+
+  closePinGate();
+  document.body.classList.add("pin-open");
+
+  var gate = document.createElement("div");
+  gate.className = "pin-gate";
+  gate.setAttribute("role", "dialog");
+  gate.setAttribute("aria-modal", "true");
+  gate.setAttribute("aria-labelledby", "pin-title");
+  gate.innerHTML =
+    '<form class="pin-card">' +
+      '<p class="pin-title" id="pin-title" data-i18n="pin.title">Este proyecto está protegido</p>' +
+      '<p class="pin-text" data-i18n="pin.text">Escribe el PIN para verlo</p>' +
+      '<input class="pin-input" type="text" name="pin" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="PIN">' +
+      '<p class="pin-error" data-i18n="pin.error" hidden>PIN incorrecto</p>' +
+      '<div class="pin-actions">' +
+        '<button class="pin-submit" type="submit" data-i18n="pin.submit">Entrar</button>' +
+        '<button class="pin-back" type="button" data-i18n="pin.back">Volver</button>' +
+      '</div>' +
+    '</form>';
+  document.body.appendChild(gate);
+  applyLang(readLang());
+
+  var form = gate.querySelector("form");
+  var input = gate.querySelector(".pin-input");
+  var error = gate.querySelector(".pin-error");
+
+  gate.querySelector(".pin-back").addEventListener("click", closePinGate);
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (input.value.trim() === PIN_VALUE) {
+      try {
+        sessionStorage.setItem(PIN_KEY, "ok");
+      } catch (err) {}
+      location.href = file;
+    } else {
+      form.classList.add("is-error");
+      error.hidden = false;
+      input.setAttribute("aria-invalid", "true");
+      input.focus();
+      input.select();
+    }
+  });
+
+  input.addEventListener("input", function () {
+    form.classList.remove("is-error");
+    error.hidden = true;
+    input.removeAttribute("aria-invalid");
+  });
+
+  input.focus();
+}
+
+if (document.body.hasAttribute("data-lock")) {
+  if (pinIsOpen()) document.body.removeAttribute("data-lock");
+} else {
+  document.querySelectorAll("a[data-lock]").forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      if (pinIsOpen()) return;
+      event.preventDefault();
+      openPinGate(link.getAttribute("href"));
+    });
+  });
+
+  var pending = "";
+  try {
+    pending = new URLSearchParams(location.search).get("pin") || "";
+  } catch (e) {}
+  if (pending) openPinGate(pending);
+}
+
 applyLang(readLang());
 
 document.querySelectorAll("[data-lang-toggle]").forEach(function (btn) {
