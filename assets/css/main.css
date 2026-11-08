@@ -205,6 +205,10 @@ a {
   color: var(--accent);
 }
 
+main {
+  padding-top: 32px;
+}
+
 /*-----------------------------------------------------
 6. Hero
 -----------------------------------------------------*/
@@ -852,6 +856,7 @@ body[data-lock] .project-navigation-simple {
 
 @media (max-width: 768px) {
 
+  main { padding-top: 16px; }
   .hero { padding: 48px 0 40px; }
   .hero .social-links {
     position: static;
